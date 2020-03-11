@@ -12,3 +12,9 @@
 	showUntrackedFiles = no
 [yadm]
 	managed = true
+[remote "origin"]
+	url = https://github.com/mnk400/dotfiles
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
