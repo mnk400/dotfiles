@@ -12,6 +12,7 @@
 
 ######## Recent display filters (latest last), cannot be altered through command line ########
 
+recent.display_filter: coap
 recent.display_filter: mqtt
 recent.display_filter: http
 
@@ -19,7 +20,7 @@ recent.display_filter: http
 # Decimal numbers.
 gui.geometry_main_x: 331
 gui.geometry_main_y: 117
-gui.geometry_main_width: 1061
+gui.geometry_main_width: 1317
 gui.geometry_main_height: 820
 
 # Main window maximized.
@@ -69,12 +70,21 @@ gui.search_case_sensitive: FALSE
 # One of: DISPLAY_FILTER, HEX_VALUE, STRING, REGEX
 gui.search_type: DISPLAY_FILTER
 
+# Geometry and maximized state of PreferencesDialog window.
+# Decimal integers.
+gui.geom.PreferencesDialog.x: 522
+gui.geom.PreferencesDialog.y: 289
+gui.geom.PreferencesDialog.width: 680
+gui.geom.PreferencesDialog.height: 475
+# TRUE or FALSE (case-insensitive).
+gui.geom.PreferencesDialog.maximized: FALSE
+
 # Geometry and maximized state of PacketDialog window.
 # Decimal integers.
-gui.geom.PacketDialog.x: 608
-gui.geom.PacketDialog.y: 397
+gui.geom.PacketDialog.x: 598
+gui.geom.PacketDialog.y: 0
 gui.geom.PacketDialog.width: 848
-gui.geom.PacketDialog.height: 656
+gui.geom.PacketDialog.height: 1178
 # TRUE or FALSE (case-insensitive).
 gui.geom.PacketDialog.maximized: FALSE
 
