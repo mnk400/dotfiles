@@ -18,6 +18,9 @@ let g:startify_custom_header = [
 
 let g:validator_python_checkers = ['flake8']
 
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+
 highlight StartifyHeader ctermfg=DarkRed
 highlight Comment cterm=italic ctermfg=darkgrey
 highlight Function cterm=italic ctermfg=cyan
