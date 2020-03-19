@@ -19,6 +19,15 @@ let g:startify_custom_header = [
 let g:validator_python_checkers = ['flake8']
 
 highlight StartifyHeader ctermfg=DarkRed
+highlight Comment cterm=italic ctermfg=darkgrey
+highlight Function cterm=italic ctermfg=cyan
+highlight String cterm=italic ctermfg=magenta
+highlight PreProc cterm=italic ctermfg=cyan
+highlight Repeat cterm=italic ctermfg=yellow
+highlight Label cterm=italic ctermfg=yellow
+highlight Exception cterm=italic ctermfg=yellow
+
+
 call pathogen#helptags()
 
 call plug#begin('~/.vim/plugged')
