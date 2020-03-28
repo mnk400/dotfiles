@@ -9,13 +9,12 @@ export M2_HOME=/Applications/apache-maven-3.6.3
 export PATH=$PATH:$M2_HOME/bin
 
 #Alias python to python3
-alias python='python3'
+#alias python='python3'
 #Alias for VS-Code insiders
 alias code='code-insiders'
-# Adding a iot-device to PYTHONPATH
-export PYTHONPATH=/Users/manik/Projects/iot-device/apps:$PYTHONPATH
-
-# Adding JUPYTER to PATH
+# Adding iot-device and my LinearRegression modules to PYTHONPATH
+export PYTHONPATH="/Users/manik/Projects/LinearRegression:/Users/manik/Projects/iot-device/apps:$PYTHONPATH"
+#Adding JUPYTER to PATH
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
