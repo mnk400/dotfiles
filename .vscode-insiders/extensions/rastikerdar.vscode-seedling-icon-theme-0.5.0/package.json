@@ -1,0 +1,49 @@
+{
+	"name": "vscode-seedling-icon-theme",
+	"displayName": "Seedling Icon Theme",
+	"description": "Small and simple icon theme for VSCode IDE.",
+	"version": "0.5.0",
+	"publisher": "rastikerdar",
+	"engines": {
+		"vscode": "^1.20.0"
+	},
+	"contributes": {
+		"iconThemes": [
+			{
+				"id": "vscode-seedling-icon-theme",
+				"label": "Seedling Icon Theme",
+				"path": "./icons.json"
+			}
+		]
+	},
+	"icon": "images/vscode-seedling-icon-theme.png",
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"icons",
+		"theme"
+	],
+	"galleryBanner": {
+		"color": "#D5DDE0",
+		"theme": "light"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rastikerdar/vscode-seedling-icon-theme.git"
+	},
+	"bugs": {
+		"url": "https://github.com/rastikerdar/vscode-seedling-icon-theme/issues"
+	},
+	"homepage": "https://github.com/rastikerdar/vscode-seedling-icon-theme",
+	"author": {
+		"email": "saber.rastikerdar@gmail.com",
+		"name": "Saber Rastikerdar"
+	},
+	"license": "MIT",
+	"__metadata": {
+		"id": "b534bc41-9d6f-42df-8ea8-2974cfd926bc",
+		"publisherId": "33ff66c9-2e5f-4483-84e4-118976c6b59a",
+		"publisherDisplayName": "Saber Rastikerdar"
+	}
+}

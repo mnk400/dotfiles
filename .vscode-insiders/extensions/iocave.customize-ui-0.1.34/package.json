@@ -1,0 +1,165 @@
+{
+	"name": "customize-ui",
+	"displayName": "Customize UI",
+	"description": "Advanced VSCode user interface customizations. Very experimental.",
+	"version": "0.1.34",
+	"publisher": "iocave",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iocave/customize-ui"
+	},
+	"engines": {
+		"vscode": "^1.34.0"
+	},
+	"categories": [
+		"Themes",
+		"Other"
+	],
+	"keywords": [
+		"font",
+		"fonts",
+		"activity bar",
+		"interface",
+		"titlebar",
+		"activitybar",
+		"title bar"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"colors": [
+			{
+				"id": "inlineTitleBar.background",
+				"description": "Color for inline titlebar background",
+				"defaults": {
+					"dark": "sideBar.background",
+					"light": "sideBar.background",
+					"highContrast": "sideBar.background"
+				}
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Customize UI",
+			"properties": {
+				"customizeUI.activityBar": {
+					"type": "string",
+					"description": "Position activity bar below the sidebar or make match traffic lights dimensions (for inline title bar)",
+					"enum": [
+						"regular",
+						"bottom",
+						"wide"
+					]
+				},
+				"customizeUI.titleBar": {
+					"type": "string",
+					"description": "Inline title bar style for macOS",
+					"enum": [
+						"regular",
+						"inline",
+						"frameless"
+					]
+				},
+				"customizeUI.stylesheet": {
+					"type": "object",
+					"markdownDescription": "Additional stylesheet definitions.\n```\n{\n  \".monaco-workbench .window-title\" :\n     \"font-size: 12px !important\"\n}\n```\n"
+				},
+				"customizeUI.listRowHeight": {
+					"type": "integer",
+					"title": "Height of rows in lists and trees in pixels (defaults to 22)"
+				},
+				"customizeUI.font.regular": {
+					"type": "string",
+					"title": "Replacement font family for regular UI font"
+				},
+				"customizeUI.font.monospace": {
+					"type": "string",
+					"title": "Replacement font family for monospace UI font"
+				},
+				"customizeUI.fontSizeMap": {
+					"default": {
+						"13px": "11px",
+						"monospace": "12px"
+					},
+					"properties": {
+						"9px": {
+							"type": "string",
+							"title": "Replacement font size for 9px fonts"
+						},
+						"10px": {
+							"type": "string",
+							"title": "Replacement font size for 10px fonts"
+						},
+						"11px": {
+							"type": "string",
+							"title": "Replacement font size for 11px fonts"
+						},
+						"12px": {
+							"type": "string",
+							"title": "Replacement font size for 12px fonts"
+						},
+						"13px": {
+							"type": "string",
+							"title": "Replacement font size for 13px fonts"
+						},
+						"14px": {
+							"type": "string",
+							"title": "Replacement font size for 14px fonts"
+						},
+						"15px": {
+							"type": "string",
+							"title": "Replacement font size for 15px fonts"
+						},
+						"16px": {
+							"type": "string",
+							"title": "Replacement font size for 16px fonts"
+						},
+						"monospace": {
+							"type": "string",
+							"title": "Replacement font size for monospace fonts"
+						},
+						"window-title": {
+							"type": "string",
+							"title": "Font size for windows title"
+						},
+						"tab-title": {
+							"type": "string",
+							"title": "Font size for tab title"
+						},
+						"menu": {
+							"type": "string",
+							"title": "Font size for menu items (windows only)"
+						}
+					},
+					"type": "object",
+					"title": "Font size map",
+					"markdownDescription": "Maps original VSCode UI font size to custom font size.\n\nFor example the following changes all 12 and 13px fonts to 11px: \n```\n{\n  \"13px\": \"11px\",\n  \"12px\": \"11px\"\n}\n```\n"
+				}
+			}
+		}
+	},
+	"extensionDependencies": [
+		"iocave.monkey-patch"
+	],
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	},
+	"__metadata": {
+		"id": "ac44dd75-bdb7-433b-9d86-23f9f070c07a",
+		"publisherId": "23f4e00e-db63-40fd-9f68-245f064ca7f5",
+		"publisherDisplayName": "iocave"
+	}
+}

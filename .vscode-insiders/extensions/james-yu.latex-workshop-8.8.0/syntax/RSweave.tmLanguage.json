@@ -1,0 +1,75 @@
+{
+    "name": "RSweave",
+    "scopeName": "text.tex.latex.rsweave",
+    "fileTypes": [
+        "rnw",
+        "Rnw"
+    ],
+    "patterns": [
+        {
+            "captures": {
+                "1": {
+                    "name": "support.function.verb.latex"
+                },
+                "2": {
+                    "name": "punctuation.definition.function.latex"
+                },
+                "3": {
+                    "name": "punctuation.definition.arguments.begin.latex"
+                },
+                "4": {
+                    "patterns": [
+                        {
+                            "include": "source.r"
+                        }
+                    ]
+                },
+                "5": {
+                    "name": "punctuation.definition.arguments.end.latex"
+                }
+            },
+            "match": "((\\\\)Sexpr)(\\{)([^\\{\\}]*)(\\})",
+            "name": "meta.function.verb.latex"
+        },
+        {
+            "include": "text.tex.latex"
+        },
+        {
+            "name": "text.tex.latex.rsweave.codeblock",
+            "begin": "^(\\s*?)(<<)(.*?)(>>=)\\s*(.+)?\\s*\\n",
+            "end": "^\\1(@)\\s*(.+)?\\s*\\n",
+            "endCaptures": {
+                "1": {
+                    "name": "meta.tag.rsweave"
+                },
+                "2": {
+                    "name": "invalid.illegal.rsweave"
+                }
+            },
+            "beginCaptures": {
+                "2": {
+                    "name": "meta.tag.rsweave"
+                },
+                "4": {
+                    "name": "meta.tag.rsweave"
+                },
+                "5": {
+                    "name": "invalid.illegal.rsweave"
+                },
+                "3": {
+                    "patterns": [
+                        {
+                            "include": "source.r#function-parameters"
+                        }
+                    ]
+                }
+            },
+            "contentName": "source.r",
+            "patterns": [
+                {
+                    "include": "source.r"
+                }
+            ]
+        }
+    ]
+}

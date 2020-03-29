@@ -1,0 +1,510 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const vscode = require("vscode");
+const path = require("path");
+const fs = require("fs-extra");
+const cp = require("child_process");
+const tmp = require("tmp");
+const pdfjsLib = require("pdfjs-dist");
+const await_semaphore_1 = require("../lib/await-semaphore");
+const maxPrintLine = '10000';
+const texMagicProgramName = 'TeXMagicProgram';
+const bibMagicProgramName = 'BibMagicProgram';
+class Builder {
+    constructor(extension) {
+        this.disableBuildAfterSave = false;
+        this.disableCleanAndRetry = false;
+        this.isMiktex = false;
+        this.extension = extension;
+        try {
+            this.tmpDir = tmp.dirSync({ unsafeCleanup: true }).name.split(path.sep).join('/');
+        }
+        catch (e) {
+            vscode.window.showErrorMessage('Error during making tmpdir to build TeX files. Please check the environment variables, TEMP, TMP, and TMPDIR on your system.');
+            throw e;
+        }
+        this.buildMutex = new await_semaphore_1.Mutex();
+        this.waitingForBuildToFinishMutex = new await_semaphore_1.Mutex();
+        try {
+            const pdflatexVersion = cp.execSync('pdflatex --version');
+            if (pdflatexVersion.toString().match(/MiKTeX/)) {
+                this.isMiktex = true;
+                this.extension.logger.addLogMessage('pdflatex is provided by MiKTeX');
+            }
+        }
+        catch (e) {
+            this.extension.logger.addLogMessage('Cannot run pdflatex to determine if we are using MiKTeX');
+        }
+    }
+    kill() {
+        const proc = this.currentProcess;
+        if (proc) {
+            const pid = proc.pid;
+            if (process.platform === 'linux') {
+                cp.exec(`pkill -P ${pid}`);
+            }
+            proc.kill();
+            this.extension.logger.addLogMessage(`Kill the current process. PID: ${pid}.`);
+        }
+        else {
+            this.extension.logger.addLogMessage('LaTeX build process to kill is not found.');
+        }
+    }
+    /**
+     * Should not use. Only for integration tests.
+     */
+    isBuildFinished() {
+        return this.buildMutex.count === 1;
+    }
+    isWaitingForBuildToFinish() {
+        return this.waitingForBuildToFinishMutex.count < 1;
+    }
+    async preprocess() {
+        const configuration = vscode.workspace.getConfiguration('latex-workshop');
+        this.disableBuildAfterSave = true;
+        await vscode.workspace.saveAll();
+        setTimeout(() => this.disableBuildAfterSave = false, configuration.get('latex.autoBuild.interval', 1000));
+        const releaseWaiting = await this.waitingForBuildToFinishMutex.acquire();
+        const releaseBuildMutex = await this.buildMutex.acquire();
+        releaseWaiting();
+        return releaseBuildMutex;
+    }
+    async buildWithExternalCommand(command, args, pwd, rootFile = undefined) {
+        if (this.isWaitingForBuildToFinish()) {
+            return;
+        }
+        const releaseBuildMutex = await this.preprocess();
+        this.extension.logger.displayStatus('sync~spin', 'statusBar.foreground');
+        let wd = pwd;
+        const ws = vscode.workspace.workspaceFolders;
+        if (ws && ws.length > 0) {
+            wd = ws[0].uri.fsPath;
+        }
+        if (rootFile !== undefined) {
+            args = args.map(this.replaceArgumentPlaceholders(rootFile, this.tmpDir));
+        }
+        this.extension.logger.addLogMessage(`Build using the external command: ${command} ${args.length > 0 ? args.join(' ') : ''}`);
+        this.extension.logger.addLogMessage(`cwd: ${wd}`);
+        this.currentProcess = cp.spawn(command, args, { cwd: wd });
+        const pid = this.currentProcess.pid;
+        this.extension.logger.addLogMessage(`External build process spawned. PID: ${pid}.`);
+        let stdout = '';
+        this.currentProcess.stdout.on('data', newStdout => {
+            stdout += newStdout;
+            this.extension.logger.addCompilerMessage(newStdout.toString());
+        });
+        let stderr = '';
+        this.currentProcess.stderr.on('data', newStderr => {
+            stderr += newStderr;
+            this.extension.logger.addCompilerMessage(newStderr.toString());
+        });
+        this.currentProcess.on('error', err => {
+            this.extension.logger.addLogMessage(`Build fatal error: ${err.message}, ${stderr}. PID: ${pid}. Does the executable exist?`);
+            this.extension.logger.displayStatus('x', 'errorForeground', `Build terminated with fatal error: ${err.message}.`, 'error');
+            this.currentProcess = undefined;
+            releaseBuildMutex();
+        });
+        this.currentProcess.on('exit', (exitCode, signal) => {
+            this.extension.logParser.parse(stdout);
+            if (exitCode !== 0) {
+                this.extension.logger.addLogMessage(`Build returns with error: ${exitCode}/${signal}. PID: ${pid}.`);
+                this.extension.logger.displayStatus('x', 'errorForeground', 'Build terminated with error', 'warning');
+                const res = this.extension.logger.showErrorMessage('Build terminated with error.', 'Open compiler log');
+                if (res) {
+                    res.then(option => {
+                        switch (option) {
+                            case 'Open compiler log':
+                                this.extension.logger.showCompilerLog();
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                }
+            }
+            else {
+                this.extension.logger.addLogMessage(`Successfully built. PID: ${pid}`);
+                this.extension.logger.displayStatus('check', 'statusBar.foreground', 'Build succeeded.');
+                try {
+                    if (rootFile === undefined) {
+                        this.extension.viewer.refreshExistingViewer();
+                    }
+                    else {
+                        this.buildFinished(rootFile);
+                    }
+                }
+                finally {
+                    this.currentProcess = undefined;
+                    releaseBuildMutex();
+                }
+            }
+            this.currentProcess = undefined;
+            releaseBuildMutex();
+        });
+    }
+    buildInitiator(rootFile, recipe = undefined, releaseBuildMutex) {
+        const steps = this.createSteps(rootFile, recipe);
+        if (steps === undefined) {
+            this.extension.logger.addLogMessage('Invalid toolchain.');
+            return;
+        }
+        this.buildStep(rootFile, steps, 0, recipe || 'Build', releaseBuildMutex); // use 'Build' as default name
+    }
+    async build(rootFile, recipe = undefined) {
+        if (this.isWaitingForBuildToFinish()) {
+            this.extension.logger.addLogMessage('Another LaTeX build processing is already waiting for the current LaTeX build to finish. Exit.');
+            return;
+        }
+        const releaseBuildMutex = await this.preprocess();
+        this.disableCleanAndRetry = false;
+        this.extension.logger.displayStatus('sync~spin', 'statusBar.foreground');
+        this.extension.logger.addLogMessage(`Build root file ${rootFile}`);
+        try {
+            const configuration = vscode.workspace.getConfiguration('latex-workshop');
+            if (configuration.get('progress.location') === 'Status Bar') {
+                this.extension.buildInfo.buildStarted();
+            }
+            else {
+                vscode.window.withProgress({
+                    location: vscode.ProgressLocation.Notification,
+                    title: 'Running build process',
+                    cancellable: true
+                }, (progress, token) => {
+                    token.onCancellationRequested(this.kill.bind(this));
+                    this.extension.buildInfo.buildStarted(progress);
+                    const p = new Promise(resolve => {
+                        this.extension.buildInfo.setResolveToken(resolve);
+                    });
+                    return p;
+                });
+            }
+            try {
+                const doc = await pdfjsLib.getDocument(this.extension.manager.tex2pdf(rootFile, true)).promise;
+                this.extension.buildInfo.setPageTotal(doc.numPages);
+            }
+            catch (e) {
+            }
+            // Create sub directories of output directory
+            // This was supposed to create the outputDir as latexmk does not
+            // take care of it (neither does any of latex command). If the
+            //output directory does not exist, the latex commands simply fail.
+            if (this.extension.manager.rootDir !== undefined) {
+                const rootDir = this.extension.manager.rootDir;
+                let outDir = this.extension.manager.getOutDir(rootFile);
+                if (!path.isAbsolute(outDir)) {
+                    outDir = path.resolve(this.extension.manager.rootDir, outDir);
+                }
+                this.extension.manager.getIncludedTeX().forEach(file => {
+                    const relativePath = path.dirname(file.replace(rootDir, '.'));
+                    fs.ensureDirSync(path.resolve(outDir, relativePath));
+                });
+            }
+            this.buildInitiator(rootFile, recipe, releaseBuildMutex);
+        }
+        catch (e) {
+            this.extension.buildInfo.buildEnded();
+            releaseBuildMutex();
+            throw (e);
+        }
+    }
+    progressString(recipeName, steps, index) {
+        if (steps.length < 2) {
+            return recipeName;
+        }
+        else {
+            return recipeName + `: ${index + 1}/${steps.length} (${steps[index].name})`;
+        }
+    }
+    buildStep(rootFile, steps, index, recipeName, releaseBuildMutex) {
+        if (index === 0) {
+            this.extension.logger.clearCompilerMessage();
+        }
+        if (index > 0) {
+            const configuration = vscode.workspace.getConfiguration('latex-workshop');
+            if (configuration.get('latex.build.clearLog.everyRecipeStep.enabled')) {
+                this.extension.logger.clearCompilerMessage();
+            }
+        }
+        this.extension.logger.displayStatus('sync~spin', 'statusBar.foreground', undefined, undefined, ` ${this.progressString(recipeName, steps, index)}`);
+        this.extension.logger.addLogMessage(`Recipe step ${index + 1}: ${steps[index].command}, ${steps[index].args}`);
+        this.extension.manager.setEnvVar();
+        const envVars = {};
+        Object.keys(process.env).forEach(key => envVars[key] = process.env[key]);
+        const currentEnv = steps[index].env;
+        if (currentEnv) {
+            Object.keys(currentEnv).forEach(key => envVars[key] = currentEnv[key]);
+        }
+        envVars['max_print_line'] = maxPrintLine;
+        if (steps[index].name === texMagicProgramName || steps[index].name === bibMagicProgramName) {
+            // All optional arguments are given as a unique string (% !TeX options) if any, so we use {shell: true}
+            let command = steps[index].command;
+            const args = steps[index].args;
+            if (args) {
+                command += ' ' + args[0];
+            }
+            this.extension.logger.addLogMessage(`cwd: ${path.dirname(rootFile)}`);
+            this.currentProcess = cp.spawn(command, [], { cwd: path.dirname(rootFile), env: envVars, shell: true });
+        }
+        else {
+            let workingDirectory;
+            if (steps[index].command === 'latexmk' && rootFile === this.extension.manager.localRootFile && this.extension.manager.rootDir) {
+                workingDirectory = this.extension.manager.rootDir;
+            }
+            else {
+                workingDirectory = path.dirname(rootFile);
+            }
+            this.extension.logger.addLogMessage(`cwd: ${workingDirectory}`);
+            this.currentProcess = cp.spawn(steps[index].command, steps[index].args, { cwd: workingDirectory, env: envVars });
+        }
+        const pid = this.currentProcess.pid;
+        this.extension.logger.addLogMessage(`LaTeX build process spawned. PID: ${pid}.`);
+        let stdout = '';
+        this.currentProcess.stdout.on('data', newStdout => {
+            stdout += newStdout;
+            this.extension.logger.addCompilerMessage(newStdout.toString());
+            try {
+                this.extension.buildInfo.newStdoutLine(newStdout.toString());
+            }
+            catch (e) {
+            }
+        });
+        let stderr = '';
+        this.currentProcess.stderr.on('data', newStderr => {
+            stderr += newStderr;
+            this.extension.logger.addCompilerMessage(newStderr.toString());
+        });
+        this.currentProcess.on('error', err => {
+            this.extension.logger.addLogMessage(`LaTeX fatal error: ${err.message}, ${stderr}. PID: ${pid}.`);
+            this.extension.logger.addLogMessage(`Does the executable exist? PATH: ${process.env.PATH}`);
+            this.extension.logger.displayStatus('x', 'errorForeground', `Recipe terminated with fatal error: ${err.message}.`, 'error');
+            this.currentProcess = undefined;
+            this.extension.buildInfo.buildEnded();
+            releaseBuildMutex();
+        });
+        this.currentProcess.on('exit', (exitCode, signal) => {
+            this.extension.logParser.parse(stdout, rootFile);
+            if (exitCode !== 0) {
+                this.extension.logger.addLogMessage(`Recipe returns with error: ${exitCode}/${signal}. PID: ${pid}. message: ${stderr}.`);
+                this.extension.buildInfo.buildEnded();
+                const configuration = vscode.workspace.getConfiguration('latex-workshop');
+                if (!this.disableCleanAndRetry && configuration.get('latex.autoBuild.cleanAndRetry.enabled')) {
+                    this.disableCleanAndRetry = true;
+                    if (signal !== 'SIGTERM') {
+                        this.extension.logger.displayStatus('x', 'errorForeground', 'Recipe terminated with error. Retry building the project.', 'warning');
+                        this.extension.logger.addLogMessage('Cleaning auxillary files and retrying build after toolchain error.');
+                        this.extension.cleaner.clean(rootFile).then(() => {
+                            this.buildStep(rootFile, steps, 0, recipeName, releaseBuildMutex);
+                        });
+                    }
+                    else {
+                        this.extension.logger.displayStatus('x', 'errorForeground');
+                        this.currentProcess = undefined;
+                        releaseBuildMutex();
+                    }
+                }
+                else {
+                    this.extension.logger.displayStatus('x', 'errorForeground');
+                    if (['onFailed', 'onBuilt'].includes(configuration.get('latex.autoClean.run'))) {
+                        this.extension.cleaner.clean(rootFile);
+                    }
+                    const res = this.extension.logger.showErrorMessage('Recipe terminated with error.', 'Open compiler log');
+                    if (res) {
+                        res.then(option => {
+                            switch (option) {
+                                case 'Open compiler log':
+                                    this.extension.logger.showCompilerLog();
+                                    break;
+                                default:
+                                    break;
+                            }
+                        });
+                    }
+                    this.currentProcess = undefined;
+                    releaseBuildMutex();
+                }
+            }
+            else {
+                if (index === steps.length - 1) {
+                    this.extension.logger.addLogMessage(`Recipe of length ${steps.length} finished. PID: ${pid}.`);
+                    try {
+                        this.buildFinished(rootFile);
+                    }
+                    finally {
+                        this.currentProcess = undefined;
+                        releaseBuildMutex();
+                    }
+                }
+                else {
+                    this.extension.logger.addLogMessage(`A step in recipe finished. PID: ${pid}.`);
+                    this.buildStep(rootFile, steps, index + 1, recipeName, releaseBuildMutex);
+                }
+            }
+        });
+    }
+    buildFinished(rootFile) {
+        this.extension.buildInfo.buildEnded();
+        this.extension.logger.addLogMessage(`Successfully built ${rootFile}.`);
+        this.extension.logger.displayStatus('check', 'statusBar.foreground', 'Recipe succeeded.');
+        if (this.extension.logParser.isLaTeXmkSkipped) {
+            return;
+        }
+        this.extension.viewer.refreshExistingViewer(rootFile);
+        this.extension.completer.reference.setNumbersFromAuxFile(rootFile);
+        this.extension.manager.parseFlsFile(rootFile);
+        const configuration = vscode.workspace.getConfiguration('latex-workshop');
+        if (configuration.get('view.pdf.viewer') === 'external' && configuration.get('synctex.afterBuild.enabled')) {
+            const pdfFile = this.extension.manager.tex2pdf(rootFile);
+            this.extension.logger.addLogMessage('SyncTex after build invoked.');
+            this.extension.locator.syncTeX(undefined, undefined, pdfFile);
+        }
+        if (configuration.get('latex.autoClean.run') === 'onBuilt') {
+            this.extension.logger.addLogMessage('Auto Clean invoked.');
+            this.extension.cleaner.clean(rootFile);
+        }
+    }
+    createSteps(rootFile, recipeName) {
+        let steps = [];
+        const configuration = vscode.workspace.getConfiguration('latex-workshop');
+        const [magicTex, magicBib] = this.findProgramMagic(rootFile);
+        if (recipeName === undefined && magicTex && !configuration.get('latex.build.forceRecipeUsage')) {
+            if (!magicTex.args) {
+                magicTex.args = configuration.get('latex.magic.args');
+                magicTex.name = texMagicProgramName + 'WithArgs';
+            }
+            if (magicBib) {
+                if (!magicBib.args) {
+                    magicBib.args = configuration.get('latex.magic.bib.args');
+                    magicBib.name = bibMagicProgramName + 'WithArgs';
+                }
+                steps = [magicTex, magicBib, magicTex, magicTex];
+            }
+            else {
+                steps = [magicTex];
+            }
+        }
+        else {
+            const recipes = configuration.get('latex.recipes');
+            const tools = configuration.get('latex.tools');
+            if (recipes.length < 1) {
+                this.extension.logger.showErrorMessage('No recipes defined.');
+                return undefined;
+            }
+            let recipe = recipes[0];
+            if ((configuration.get('latex.recipe.default') === 'lastUsed') && (this.previouslyUsedRecipe !== undefined)) {
+                recipe = this.previouslyUsedRecipe;
+            }
+            if (recipeName) {
+                const candidates = recipes.filter(candidate => candidate.name === recipeName);
+                if (candidates.length < 1) {
+                    this.extension.logger.showErrorMessage(`Failed to resolve build recipe: ${recipeName}`);
+                }
+                recipe = candidates[0];
+            }
+            this.previouslyUsedRecipe = recipe;
+            recipe.tools.forEach(tool => {
+                if (typeof tool === 'string') {
+                    const candidates = tools.filter(candidate => candidate.name === tool);
+                    if (candidates.length < 1) {
+                        this.extension.logger.showErrorMessage(`Skipping undefined tool "${tool}" in recipe "${recipe.name}."`);
+                    }
+                    else {
+                        steps.push(candidates[0]);
+                    }
+                }
+                else {
+                    steps.push(tool);
+                }
+            });
+        }
+        steps = JSON.parse(JSON.stringify(steps));
+        const docker = configuration.get('docker.enabled');
+        steps.forEach(step => {
+            if (docker) {
+                switch (step.command) {
+                    case 'latexmk':
+                        if (process.platform === 'win32') {
+                            step.command = path.resolve(this.extension.extensionRoot, './scripts/latexmk.bat');
+                        }
+                        else {
+                            step.command = path.resolve(this.extension.extensionRoot, './scripts/latexmk');
+                            fs.chmodSync(step.command, 0o755);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if (step.args) {
+                step.args = step.args.map(this.replaceArgumentPlaceholders(rootFile, this.tmpDir));
+            }
+            if (step.env) {
+                Object.keys(step.env).forEach(v => {
+                    const e = step.env && step.env[v];
+                    if (step.env && e) {
+                        step.env[v] = this.replaceArgumentPlaceholders(rootFile, this.tmpDir)(e);
+                    }
+                });
+            }
+            if (configuration.get('latex.option.maxPrintLine.enabled')) {
+                if (!step.args) {
+                    step.args = [];
+                }
+                if (this.isMiktex && ((step.command === 'latexmk' && !step.args.includes('-lualatex') && !step.args.includes('-pdflua')) || step.command === 'pdflatex')) {
+                    step.args.unshift('--max-print-line=' + maxPrintLine);
+                }
+            }
+        });
+        return steps;
+    }
+    findProgramMagic(rootFile) {
+        const regexTex = /^(?:%\s*!\s*T[Ee]X\s(?:TS-)?program\s*=\s*([^\s]*)$)/m;
+        const regexBib = /^(?:%\s*!\s*BIB\s(?:TS-)?program\s*=\s*([^\s]*)$)/m;
+        const regexTexOptions = /^(?:%\s*!\s*T[Ee]X\s(?:TS-)?options\s*=\s*(.*)$)/m;
+        const regexBibOptions = /^(?:%\s*!\s*BIB\s(?:TS-)?options\s*=\s*(.*)$)/m;
+        const content = fs.readFileSync(rootFile).toString();
+        const tex = content.match(regexTex);
+        const bib = content.match(regexBib);
+        let texCommand = undefined;
+        let bibCommand = undefined;
+        if (tex) {
+            texCommand = {
+                name: texMagicProgramName,
+                command: tex[1]
+            };
+            this.extension.logger.addLogMessage(`Found TeX program by magic comment: ${texCommand.command}`);
+            const res = content.match(regexTexOptions);
+            if (res) {
+                texCommand.args = [res[1]];
+                this.extension.logger.addLogMessage(`Found TeX options by magic comment: ${texCommand.args}`);
+            }
+        }
+        if (bib) {
+            bibCommand = {
+                name: bibMagicProgramName,
+                command: bib[1]
+            };
+            this.extension.logger.addLogMessage(`Found BIB program by magic comment: ${bibCommand.command}`);
+            const res = content.match(regexBibOptions);
+            if (res) {
+                bibCommand.args = [res[1]];
+                this.extension.logger.addLogMessage(`Found BIB options by magic comment: ${bibCommand.args}`);
+            }
+        }
+        return [texCommand, bibCommand];
+    }
+    replaceArgumentPlaceholders(rootFile, tmpDir) {
+        return (arg) => {
+            const docker = vscode.workspace.getConfiguration('latex-workshop').get('docker.enabled');
+            const doc = rootFile.replace(/\.tex$/, '').split(path.sep).join('/');
+            const docfile = path.basename(rootFile, '.tex').split(path.sep).join('/');
+            const outDir = this.extension.manager.getOutDir(rootFile);
+            return arg.replace(/%DOC%/g, docker ? docfile : doc)
+                .replace(/%DOCFILE%/g, docfile)
+                .replace(/%DIR%/g, path.dirname(rootFile).split(path.sep).join('/'))
+                .replace(/%TMPDIR%/g, tmpDir)
+                .replace(/%OUTDIR%/g, outDir);
+        };
+    }
+}
+exports.Builder = Builder;
+//# sourceMappingURL=builder.js.map

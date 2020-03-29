@@ -1,0 +1,389 @@
+.extension-editor .subcontent .monaco-list-row .extension > .details > .header > .name {
+    font-size: var(--font-size-16) !important;
+}
+
+.monaco-list .outline-element .outline-element-decoration.bubble,
+.monaco-workbench .part.statusbar > .statusbar-entry span.octicon,
+.extension-editor > .header,
+.extension-editor > .header > .details > .title > .identifier,
+.extension-editor > .body > .navbar,
+.extension-editor .subcontent .monaco-list-row .unknown-extension > .message,
+.monaco-workbench .statusbar > .statusbar-item > .monaco-dropdown.send-feedback span.octicon,
+.settings-header-widget > .settings-search-container > .settings-search-input > .monaco-inputbox .input {
+    font-size: var(--font-size-14) !important;
+}
+
+.monaco-findInput .monaco-inputbox,
+.monaco-list-type-filter,
+.monaco-editor .find-widget .replace-input .input,
+.monaco-editor .peekview-widget .head .peekview-title,
+.monaco-quick-open-widget,
+.monaco-workbench .part > .title > .title-label a,
+.monaco-workbench .part > .content,
+.monaco-workbench,
+.monaco-workbench .screen-reader-detected-explanation .buttons a,
+.monaco-workbench .part.editor > .content .editor-group-container > .title .title-label a,
+.monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container > .tab .tab-label a,
+.monaco-editor .review-widget .head .review-title,
+.monaco-workbench.windows .zone-widget .zone-widget-container.exception-widget,
+.monaco-workbench.linux .zone-widget .zone-widget-container.exception-widget,
+.extension-editor > .header > .details > .subtext-container,
+.settings-editor > .settings-header > .settings-header-controls .settings-tabs-widget > .monaco-action-bar .action-item .action-label {
+    font-size: var(--font-size-13) !important;
+}
+
+.monaco-workbench .part.editor > .content .editor-group-container > .title .title-label a,
+.monaco-workbench .part.editor > .content .editor-group-container > .title .tabs-container > .tab .tab-label a {
+    font-size: var(--font-size-tab-title) !important;
+}
+
+.monaco-inputbox-container .monaco-inputbox-message,
+.monaco-drag-image,
+.monaco-tree-drag-image,
+.monaco-editor .find-widget > .find-part,
+.monaco-editor .find-widget > .replace-part,
+.monaco-editor-hover .hover-row.status-bar,
+.monaco-editor-group-drag-image,
+.monaco-workbench .notifications-list-container .notification-list-item .notification-list-item-source,
+.monaco-workbench .notifications-list-container .notification-list-item .notification-list-item-buttons-container .monaco-button,
+.monaco-workbench .part.statusbar,
+.monaco-workbench .part.titlebar > .window-title,
+.monaco-editor .review-widget .body .review-comment .review-comment-contents .comment-reactions .action-item .action-label,
+.monaco-editor .review-widget .validation-error,
+.extensions-viewlet > .extensions .list-actionbar-container .monaco-action-bar .action-item > .octicon,
+.extensions-viewlet > .extensions .monaco-list-row > .extension > .details > .header-container > .header .extension-remote-badge > .octicon,
+.settings-tabs-widget .monaco-action-bar .action-item .dropdown-icon,
+.monaco-workbench .terminal-message-widget {
+    font-size: var(--font-size-12) !important;
+}
+
+.monaco-keybinding > .monaco-keybinding-key,
+.monaco-panel-view .panel > .panel-header,
+.monaco-panel-view .panel > .panel-header h3.title,
+.monaco-workbench .part > .title > .title-label h2,
+.monaco-workbench .activitybar > .content .monaco-action-bar .badge .badge-content,
+.monaco-workbench > .notifications-center > .notifications-center-header > .notifications-center-header-title,
+.monaco-workbench .part.panel > .title > .panel-switcher-container > .monaco-action-bar .action-item,
+.monaco-panel-view .panel > .panel-header h3.title,
+.monaco-editor .debug-hover-widget .complex-value .title,
+.monaco-workbench .part > .title > .title-actions .start-debug-action-item,
+.debug-viewlet .scope,
+.monaco-workbench.mac .zone-widget .zone-widget-container.exception-widget,
+.extension-editor .subcontent .monaco-list-row .content .unknown-extension > .error-marker,
+.explorer-viewlet .explorer-open-editors .monaco-list .monaco-list-row .editor-group,
+.default-preferences-editor-container > .preferences-header-container > .default-preferences-header,
+.settings-tabs-widget > .monaco-action-bar .action-item .action-label,
+.scm-viewlet .monaco-list-row > .resource-group > .name,
+.search-view .query-details.more h4 {
+    font-size: var(--font-size-11) !important;
+}
+
+.monaco-tl-twistie,
+.monaco-editor .comment-range-glyph.comment-thread:before,
+.extension-editor > .header > .details > .title > .builtin,
+.extension-editor > .header > .details > .title > .preview,
+.settings-tabs-widget > .monaco-action-bar .action-item .action-details,
+.monaco-workbench > .welcomeOverlay,
+.monaco-workbench .part.editor > .content .welcomePage {
+    font-size: var(--font-size-10) !important;
+}
+
+.debug-viewlet .debug-call-stack-title > .pause-message > .label,
+.monaco-workbench.linux .repl .repl-input-wrapper:before {
+    font-size: var(--font-size-9) !important;
+}
+
+.monaco-workbench .part.titlebar > .window-title {
+    font-size: var(--font-size-window-title) !important;
+}
+
+.monaco-menu .monaco-action-bar.vertical .action-label,
+.monaco-menu .monaco-action-bar.vertical .keybinding,
+.monaco-menu .monaco-action-bar.vertical .submenu-indicator {
+    font-size: var(--font-size-menu) !important;
+}
+
+.monaco-workbench .debug-viewlet .monaco-list-row .expression,
+.monaco-workbench .debug-hover-widget .monaco-list-row .expression,
+.monaco-workbench .debug-viewlet .monaco-list-row .expression,
+.monaco-workbench .debug-hover-widget .monaco-list-row .expression,
+.monaco-workbench.mac .debug-viewlet .monaco-list-row .expression,
+.monaco-workbench.mac .debug-hover-widget .monaco-list-row .expression {
+    font-size: var(--font-size-monospace) !important;
+}
+
+.customview-tree .monaco-tree .monaco-tree-row .custom-view-tree-node-item > .custom-view-tree-node-item-icon {
+    height: var(--row-height) !important;
+}
+
+.monaco-panel-view .panel>.panel-header>.actions .action-label.icon {
+    height: var(--row-height) !important;
+}
+
+.customview-tree .monaco-tree .monaco-tree-row .custom-view-tree-node-item {
+    height: var(--row-height) !important;
+    line-height: var(--row-height) !important;
+}
+
+.customview-tree .monaco-tree .monaco-tree-row .custom-view-tree-node-item > .custom-view-tree-node-item-icon {
+    height: var(--row-height) !important;
+}
+
+.debug-viewlet .monaco-list-row {
+    line-height: var(--row-height) !important;
+}
+
+.explorer-viewlet .explorer-item,
+.explorer-viewlet .open-editor,
+.explorer-viewlet .editor-group {
+    height: var(--row-height) !important;
+    line-height: var(--row-height) !important;
+}
+
+.explorer-viewlet .explorer-open-editors .monaco-list .monaco-list-row > .monaco-action-bar .close-editor-action {
+    height: var(--row-height) !important;
+}
+
+.monaco-workbench.linux .explorer-viewlet .explorer-item .monaco-inputbox,
+.monaco-workbench.mac .explorer-viewlet .explorer-item .monaco-inputbox {
+    height: var(--row-height) !important;
+}
+
+.search-view .filematch {
+    line-height: var(--row-height) !important;
+}
+
+.search-view .linematch {
+    line-height: var(--row-height) !important;
+}
+
+.monaco-panel-view .panel > .panel-header > .actions .action-label.icon {
+    background-size: calc(var(--factor) * 16px) !important;
+}
+
+.monaco-workbench .symbol-ic on.inline {
+    background-size: calc(var(--factor) * 16px) calc(var(--factor) * 16px) !important;
+}
+
+/**
+ * Tweaks
+ */
+
+/* search result actiosn */
+body.row-height-lte20 .search-view .monaco-list .monaco-list-row .monaco-action-bar .action-label {
+    margin-top: 3px !important;
+    width: 15px !important;
+    height: 15px !important;
+}
+
+body.row-height-lte20 .monaco-findInput>.controls {
+    top: 2px !important;
+}
+
+body.row-height-lte20 .scm-viewlet .scm-editor > .monaco-inputbox > .wrapper > textarea.input {
+    min-height: 24px !important;
+}
+
+body.row-height-lte20 .monaco-workbench .debug-viewlet .monaco-list-row .expression,
+body.row-height-lte20 .monaco-workbench .debug-hover-widget .monaco-list-row .expression,
+body.row-height-lte20 .monaco-workbench .debug-viewlet .monaco-list-row .expression,
+body.row-height-lte20 .monaco-workbench .debug-hover-widget .monaco-list-row .expression,
+body.row-height-lte20 .monaco-workbench.mac .debug-viewlet .monaco-list-row .expression,
+body.row-height-lte20 .monaco-workbench.mac .debug-hover-widget .monaco-list-row .expression {
+    font-size: var(--font-size-monospace) !important;
+}
+
+/*
+ * Bottom activity bar
+ */
+
+ body.activity-bar-at-bottom .monaco-workbench .part.activitybar {
+    width: 100% !important;
+    overflow: hidden;
+}
+
+body.activity-bar-at-bottom .monaco-workbench .activitybar > .content {
+    flex-direction: row !important;
+}
+
+body.activity-bar-at-bottom .monaco-workbench .activitybar>.content .monaco-action-bar .action-item {
+    padding-right: 0px !important;
+}
+
+body.activity-bar-at-bottom .monaco-workbench .activitybar > .content .monaco-action-bar .action-label {
+    /* padding: 0 0 0 var(--activity-bar-action-width) !important; */
+    padding: 0px !important;
+}
+
+body.activity-bar-at-bottom .monaco-workbench .activitybar .monaco-action-bar .action-label {
+    -webkit-mask-size: 19px 19px !important;
+    font-size: 17.5px !important;
+}
+
+body.activity-bar-at-bottom .monaco-workbench .activitybar>.content .monaco-action-bar .badge {
+    width: var(--activity-bar-action-width) !important;
+    height: var(--activity-bar-action-height) !important;
+}
+
+body.activity-bar-at-bottom .monaco-workbench .activitybar>.content .monaco-action-bar .action-item {
+    padding: 0px !important;
+}
+
+body.activity-bar-at-bottom .monaco-workbench .activitybar>.content .monaco-action-bar .action-label {
+    height: var(--activity-bar-action-height) !important;
+    width: var(--activity-bar-action-width) !important;
+}
+
+body.activity-bar-at-bottom .monaco-workbench .activitybar>.content .monaco-action-bar .badge .badge-content {
+    top: 12px;
+    left: 12px !important;
+    font-size: 8px !important;
+    height: 14px;
+    line-height: 14px;
+    padding: 0px 3px;
+}
+
+body.activity-bar-at-bottom .monaco-workbench .activitybar > .content .monaco-action-bar .action-item:focus:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: var(--activity-bar-action-width);
+    height: calc(var(--activity-bar-action-height) - 2px);
+    border-left-width: 0px !important;
+    border-bottom: 2px solid var(--focus-border);
+}
+
+body.activity-bar-at-bottom .monaco-workbench .activitybar > .content .monaco-action-bar .action-item.clicked:focus:before {
+    border-bottom: none !important; /* no focus feedback when using mouse */
+}
+
+body.activity-bar-at-bottom .monaco-workbench .activitybar > .content .composite-bar {
+    margin-left: var(--activity-bar-side-margin);
+}
+
+body.activity-bar-at-bottom .monaco-workbench .activitybar > .content .global-activity {
+    margin-right: var(--activity-bar-side-margin);
+}
+
+body.activity-bar-at-bottom .monaco-workbench .part.statusbar {
+    height: 20px !important;
+}
+
+body.activity-bar-at-bottom .monaco-workbench .part.statusbar>.statusbar-item,
+body.activity-bar-at-bottom .monaco-workbench .part.statusbar>.items-container>.statusbar-item {
+    line-height: 20px !important;
+}
+
+body.activity-bar-at-bottom .monaco-workbench .activitybar .active-item-indicator {
+    display:none !important;
+}
+
+/* christmas... */
+
+body.activity-bar-at-bottom .nosidebar  .activitybar .global-activity .actions-container:before {
+    display:none;
+}
+
+body.activity-bar-at-bottom  .activitybar .global-activity .actions-container:before {
+    width:35px !important;
+    background-size: 17px !important;
+}
+
+body.activity-bar-wide .activitybar {
+    width: var(--traffic-lights-width) !important;
+}
+
+body.activity-bar-wide .activitybar > .content :not(.monaco-menu) > .monaco-action-bar .badge .badge-content {
+    left: calc(50% + 0.5em);
+    right: auto;
+}
+
+/* christmas... */
+body.activity-bar-wide  .activitybar .global-activity .actions-container:before {
+    display: none;
+}
+
+/**
+ * Inline Title bar
+ */
+
+body.inline-title-bar:not(.activity-bar-at-bottom) .monaco-workbench:not(.fullscreen) .activitybar:not(.right) .content  {
+    margin-top: var(--traffic-lights-height) !important;
+}
+
+body.inline-title-bar:not(.activity-bar-at-bottom) .monaco-workbench:not(.fullscreen) .activitybar:not(.right) .activity-bar-placeholder {
+    position: absolute;
+    width: 50px;
+    height: var(--traffic-lights-height);
+    -webkit-app-region: drag;
+    top: 0px;
+}
+
+.title-actions a:not([aria-disabled="true"]),
+.title-actions select,
+.title-actions div[role="button"],
+.debug-toolbar {
+    -webkit-app-region: no-drag;
+}
+
+body.inline-title-bar .sidebar .composite.title {
+    height: var(--traffic-lights-height) !important;
+}
+
+body.inline-title-bar .sidebar .title-label {
+    line-height: var(--traffic-lights-height) !important;
+}
+
+body.inline-title-bar .sidebar .title-actions {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Make debug buttons slightly smaller */
+body.inline-title-bar .part>.title>.title-actions .action-label {
+    min-width: 24px !important;
+}
+
+/* Allow dragging on side-bar title... */
+body.inline-title-bar .monaco-workbench:not(.fullscreen) .sidebar .composite.title {
+    -webkit-app-region: drag;
+}
+
+body.inline-title-bar .monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container,
+body.inline-title-bar .monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab,
+body.inline-title-bar .monaco-workbench .part.editor>.content .editor-group-container>.title .editor-actions,
+body.inline-title-bar .monaco-workbench .part.editor>.content .editor-group-container>.title .editor-actions .action-label, .monaco-workbench .part.editor>.content .editor-group-container>.title .title-actions .action-label {
+    height: var(--traffic-lights-height) !important;
+    line-height: var(--traffic-lights-height) !important;
+}
+
+body.inline-title-bar .monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab .monaco-icon-label:before {
+    height: var(--traffic-lights-height) !important;
+}
+
+body.inline-title-bar .monaco-workbench .part>.title>.title-actions {
+    height: calc(var(--traffic-lights-height) - 1px) !important;
+}
+
+body.inline-title-bar div.dragging-area-top {
+    flex-grow: 1.0;
+    -webkit-app-region: drag;
+}
+
+body.inline-title-bar div.dragging-area-left-padding {
+    height: var(--traffic-lights-height);
+    -webkit-app-region: drag;
+}
+
+/* Inline titlebar, no tabs */
+body.inline-title-bar .monaco-workbench:not(.fullscreen) .label-container.no-tabs,
+body.inline-title-bar .monaco-workbench:not(.fullscreen) .label-container.no-tabs + div.title-actions {
+    -webkit-app-region: drag;
+}
+
+body.inline-title-bar .monaco-workbench:not(.fullscreen) .label-container.no-tabs .monaco-breadcrumb-item,
+body.inline-title-bar .monaco-workbench:not(.fullscreen) .label-container.no-tabs .monaco-icon-label-container {
+    -webkit-app-region: no-drag;
+}
