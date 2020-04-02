@@ -1,9 +1,0 @@
-2020-02-15T19:18:09.075Z - info:   [12729] *** FOLDER: /Users/juback/Projects/gc-excelviewer ***
-2020-02-15T19:18:09.077Z - info:   [12729] AzureReposVSCode/1.161.0 (VSCode 1.42.1; Darwin 18.6.0; Node 12.4.0)
-2020-02-15T19:18:10.896Z - error:  [12729] Could not find a workspace with mappings (e.g., not a TFVC repository, wrong version of TF is being used).
-2020-02-15T19:20:04.496Z - info:   [12729] *** FOLDER: /Users/juback/Projects/gc-excelviewer ***
-2020-02-15T19:20:04.497Z - info:   [12729] AzureReposVSCode/1.161.0 (VSCode 1.42.1; Darwin 18.6.0; Node 12.4.0)
-2020-02-15T19:20:05.674Z - error:  [12729] Could not find a workspace with mappings (e.g., not a TFVC repository, wrong version of TF is being used).
-2020-03-08T23:20:02.299Z - info:   [40498] *** FOLDER: /Users/juback/Projects/gc-excelviewer ***
-2020-03-08T23:20:02.300Z - info:   [40498] AzureReposVSCode/1.161.0 (VSCode 1.42.1; Darwin 18.6.0; Node 12.4.0)
-2020-03-08T23:20:04.738Z - error:  [40498] Could not find a workspace with mappings (e.g., not a TFVC repository, wrong version of TF is being used).

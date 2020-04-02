@@ -8,25 +8,22 @@ export ZSH="/Users/manik/.oh-my-zsh"
 export M2_HOME=/Applications/apache-maven-3.6.3
 export PATH=$PATH:$M2_HOME/bin
 
-#Alias python to python3
-#alias python='python3'
-#Alias for VS-Code insiders
+# Alias python to python3
+alias python='python3'
+
+# Alias for VS-Code insiders
 alias code='code-insiders'
+
 # Adding iot-device and my LinearRegression modules to PYTHONPATH
 export PYTHONPATH="/Users/manik/Projects/LinearRegression:/Users/manik/Projects/iot-device/apps:$PYTHONPATH"
 #Adding JUPYTER to PATH
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# Setting the zsh theme
 ZSH_THEME="mnktheme"
+
+# Initializing thefuck
 eval $(thefuck --alias)
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"

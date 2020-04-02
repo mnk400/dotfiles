@@ -18,8 +18,8 @@ recent.display_filter: http
 
 # Main window geometry.
 # Decimal numbers.
-gui.geometry_main_x: 125
-gui.geometry_main_y: 116
+gui.geometry_main_x: 480
+gui.geometry_main_y: 45
 gui.geometry_main_width: 1317
 gui.geometry_main_height: 820
 
