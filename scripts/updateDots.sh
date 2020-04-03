@@ -5,8 +5,8 @@
 messageStr="Scripted Auto Update: $(date)"
 
 #Adding all the tracked files
-yadm add /Users/manik/Library/Mobile\ Documents/com~apple~CloudDocs/Projects/scripts
-yadm add ~/.vim
+#yadm add /Users/manik/Library/Mobile\ Documents/com~apple~CloudDocs/Projects/scripts
+#yadm add ~/.vim
 yadm add -u
 
 
