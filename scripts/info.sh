@@ -21,8 +21,8 @@ NOC='\033[0m'
 printf "\n\n${RED} ━${GRN} ━${YLW} ━${BLU} ━${MAG} ━${CYN} ━\n\n"
 
 printf "${RED}wm:         ${NOC}macOS\n"
-printf "${RED}font:       ${NOC}Envy Code R\n"
+printf "${RED}font:       ${NOC}Victor Mono\n"
 printf "${RED}terminal:   ${NOC}iTerm2\n"
 printf "${RED}date:       ${NOC}$(date "+%d %b")\n"
-printf "${RED}resolution: ${NOC}2880x1800\n"
+printf "${RED}resolution: ${NOC}$(system_profiler SPDisplaysDataType | awk '/Resolution/{print $2 $3 $4}')\n"
 printf "${RED}uptime:     ${NOC}$(uptime | awk '{print $3}') Days\n"
