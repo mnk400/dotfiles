@@ -1,4 +1,4 @@
-install :
+install :	
 		@echo "installing all scripts"
 
 		@echo "installing syncNas.sh"
@@ -16,4 +16,6 @@ uninstall :
 		@echo "uninstalling all scripts"
 		@rm -r /usr/local/bin/syncNas.sh
 		@rm -r /usr/local/bin/updateDots.sh
-		@rm -r /usr/local/bin/themeSystem.sh
+		@rm -r /usr/local/bin/themeSystem.sh	
+		@rm -r /usr/local/bin/info.sh
+
