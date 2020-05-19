@@ -11,9 +11,6 @@ export PATH=$PATH:$M2_HOME/bin
 # Alias python to python3
 alias python='python3'
 
-# Alias for VS-Code insiders
-alias code='code-insiders'
-
 # Adding iot-device and my LinearRegression modules to PYTHONPATH
 export PYTHONPATH="/Users/manik/Projects/LinearRegression:/Users/manik/Projects/iot-device/apps:$PYTHONPATH"
 #Adding JUPYTER to PATH
@@ -112,3 +109,4 @@ source $ZSH/oh-my-zsh.sh
 # alias pip='pip3'
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
