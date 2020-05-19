@@ -1,19 +1,26 @@
 #!/bin/bash
 #Script to auto update all the tracked files in my dot file repository
 
-if [ "$#" -ne 1 ]; then
+#Checking for a commit message
+if [ "$#" -gt 1 ]; then
     echo "Illegal number of parameters"
+    exit
+fi
+
+if [ "$#" == 0 ]; then
+    msg="Scripted Auto Update"
+elif [ "$#" == 1 ]; then
+    msg="$1"
 fi
 
 #Creating a commit message
-messageStr="Scripted Auto Update: $(date)"
+commitMsg="$msg: $(date)"
 
 #Adding all the tracked files
 yadm add -u
 
-
 #Committing
-yadm commit -m "$messageStr"
+yadm commit -m "$commitMsg"
 
 #Pushing to github
 yadm push
