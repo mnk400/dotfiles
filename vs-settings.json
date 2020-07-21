@@ -1,0 +1,127 @@
+{
+    "python.insidersChannel": "off",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "editor.fontFamily": "Victor Mono",
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "python.jediEnabled": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "window.titleBarStyle": "native",
+    "editor.renderIndentGuides": false,
+    "editor.hideCursorInOverviewRuler": true, 
+    "customizeUI.titleBar": "inline",
+    "customizeUI.activityBar": "wide",
+    "editor.overviewRulerBorder": false,
+    "update.mode": "manual",
+    "git.enableSmartCommit": true,
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.scrollbar.vertical": "hidden",
+    "cSpell.userWords": [
+      "GPIO",
+      "Jedis",
+      "MQTT",
+      "Rmodule",
+      "Smtp",
+      "loglikehood",
+      "manik",
+      "numpy"
+    ],
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "scope": [
+              //following will be in italic
+              "comment",
+              "comment.block",
+              "comment.block.documentation",
+              "string.quoted.docstring.multi.python",
+              "entity.name.type.class", //class names
+              "keyword", //import, export, return…
+              "constant", //String, Number, Boolean…, this, super
+              "storage.modifier", //static keyword
+              "storage.type.class.js", //class keyword
+            ],
+            "settings": { 
+              "fontStyle": "italic"
+            }
+          },
+          {
+            "scope": [
+              //following will be excluded from italics
+              "invalid",
+              "keyword.operator",
+              "constant.numeric.css",
+              "keyword.other.unit.px.css",
+              "constant.numeric.decimal.js",
+              "constant.numeric.json"
+            ],
+            "settings": {
+              "fontStyle": ""
+            }
+          },
+          {
+            "scope": [
+              "comment",
+            ],
+            "settings": { 
+              "foreground":"#787878",
+            }
+          },
+        ]
+      },
+
+
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#141414",
+        "editor.background": "#0a0a0a",
+        "sideBar.background": "#0f0f0f",
+        "sideBarSectionHeader.background":"#141414",
+        "editorGroupHeader.tabsBackground": "#0a0a0a",
+        "tab.activeBackground": "#242424",
+        "tab.inactiveBackground": "#141414",
+        "editorBracketMatch.background": "#353535",
+        "editorBracketMatch.border": "#353535",
+        "statusBar.background": "#42292f",
+        "statusBar.foreground": "#e3d1d3",
+        "badge.background": "#943d3d",
+        "activityBarBadge.background": "#943d3d",
+        "editor.selectionBackground": "#333333",
+        "editor.lineHighlightBackground": "#202020",
+        "scrollbar.shadow": "#00000000",
+        "peekView.border": "#00000000",
+        "peekViewResult.background":"#202020",
+        "peekViewTitle.background": "#202020",
+        "statusBarItem.remoteBackground": "#4b6b54",
+        "statusBar.noFolderBackground": "#594b6b",
+        "statusBar.debuggingBackground": "#b35a39"
+    },
+    "breadcrumbs.enabled": true,
+    "editor.renderWhitespace": "none",
+    "workbench.iconTheme": "vscode-seedling-icon-theme",
+    "customizeUI.font.regular": "Victor Mono",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.autoBuild.interval": 500,
+    "explorer.confirmDelete": false,
+    "python.linting.flake8CategorySeverity.F": "Information",
+    "[python]": {},
+    "git.confirmSync": false,
+    "python.dataScience.allowUnauthorizedRemoteConnection": true,
+    "window.zoomLevel": 0,
+    "python.testing.unittestEnabled": true,
+    "editor.accessibilitySupport": "off",
+    "kite.showWelcomeNotificationOnStartup": false,
+    "python.pythonPath": "/usr/local/bin/python3",
+    "python.dataScience.askForKernelRestart": false,
+    "python.linting.flake8Enabled": true,
+    "window.nativeTabs": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8CategorySeverity.E": "Hint",
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "java.semanticHighlighting.enabled": true,
+    "python.languageServer": "Microsoft",
+
+}
