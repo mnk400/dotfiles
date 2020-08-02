@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/manik/.oh-my-zsh"
+export ZSH="/home/manik/.oh-my-zsh"
 
 # Path set for Maven
 export M2_HOME=/Applications/apache-maven-3.6.3
@@ -16,9 +16,9 @@ export PYTHONPATH="/Users/manik/Projects/LinearRegression:/Users/manik/Projects/
 #Adding JUPYTER to PATH
 
 # Setting the zsh theme
-ZSH_THEME="mnktheme"
+ZSH_THEME="pastel"
 
-# Initializing thefuck
+# Initializng thefuck
 eval $(thefuck --alias)
 
 

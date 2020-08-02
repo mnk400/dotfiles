@@ -29,8 +29,12 @@ highlight PreProc cterm=italic ctermfg=cyan
 highlight Repeat cterm=italic ctermfg=yellow
 highlight Label cterm=italic ctermfg=yellow
 highlight Exception cterm=italic ctermfg=yellow
-
-
+highlight StartifyBracket ctermfg=green
+highlight StartifyFile ctermfg=cyan
+highlight StartifyPath ctermfg=darkgrey
+highlight StartifySlash ctermfg=darkgrey
+highlight StartifyNumber ctermfg=green
+highlight StartifySection ctermfg=yellow
 call pathogen#helptags()
 
 call plug#begin('~/.vim/plugged')

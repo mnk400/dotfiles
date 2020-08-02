@@ -1,6 +1,5 @@
-i# Dotfiles
+# Dotfiles
 
-![](https://i.imgur.com/9Nbd5Sz.png)
-![](https://i.imgur.com/CUw1QMS.png)
+![](https://i.imgur.com/vExDZ6Y.jpg)
+![](https://i.imgur.com/NKajp8y.png)
 
-App Icons themed using MTinstaller
