@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 clear
 read -r -d '' name <<- EOM 
 
@@ -20,9 +21,9 @@ NOC='\033[0m'
  
 printf "\n\n${RED} ━${GRN} ━${YLW} ━${BLU} ━${MAG} ━${CYN} ━\n\n"
 
-printf "${RED}wm:         ${NOC}macOS\n"
+printf "${RED}OS:         ${NOC}WSL(Ubuntu)\n"
 printf "${RED}font:       ${NOC}Victor Mono\n"
-printf "${RED}terminal:   ${NOC}iTerm2\n"
+printf "${RED}terminal:   ${NOC}Windows Terminal Preview\n"
 printf "${RED}date:       ${NOC}$(date "+%d %b")\n"
-printf "${RED}resolution: ${NOC}$(system_profiler SPDisplaysDataType | awk '/Resolution/{print $2 $3 $4}')\n"
-printf "${RED}uptime:     ${NOC}$(uptime | awk '{print $3}') Days\n"
+printf "${RED}resolution: ${NOC}3840 x 2400\n"
+printf "${RED}uptime:     ${NOC}$(uptime | awk '{print $3}') Minutes\n"
