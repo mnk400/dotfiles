@@ -25,6 +25,7 @@
             "fontFace": "Victor Mono",
             "fontSize": 11,
             "colorScheme": "Pastel",
+            "padding":"20, 15, 20, 10",
             // "useAcrylic": true, 
             // "acrylicOpacity": 0.8
         },
@@ -54,7 +55,8 @@
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
                 "name": "Ubuntu",
-                "source": "Windows.Terminal.Wsl"
+                "source": "Windows.Terminal.Wsl",
+                "startingDirectory": "//wsl$/Ubuntu/home/manik"
             }
         ]
     },
@@ -74,7 +76,7 @@
         
             "black" : "#141414",
             "blue" : "#3d729e",
-            "cyan" : "#6b97a1",
+            "cyan" : "#6f8999",
             "green" : "#5da15a",
             "purple" : "#ac5177",
             "red" : "#bd5252",
