@@ -11,12 +11,15 @@ export PATH=$PATH:$M2_HOME/bin
 # Alias python to python3
 alias python='python3'
 
+# WSL, X-display setting
+export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+
 # Adding iot-device and my LinearRegression modules to PYTHONPATH
 export PYTHONPATH="/Users/manik/Projects/LinearRegression:/Users/manik/Projects/iot-device/apps:$PYTHONPATH"
 #Adding JUPYTER to PATH
 
 # Setting the zsh theme
-ZSH_THEME="pastel"
+ZSH_THEME="paste"
 
 # Initializng thefuck
 eval $(thefuck --alias)
@@ -125,3 +128,4 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 # alias pip3 to pip
 
 
+export TERM=xterm-256color
