@@ -20,7 +20,7 @@ then
 	echo "Syncing Documents"
 	rsync -rtvu --delete /home/manik/Manik/Drive/Documents/ $PATHTODOC
 	echo "Syncing Photos"
-	rsync -rtvu --delete /home/manik/Manik/Pictures/ $PATHTOPICS
+	rsync -rtvu --delete /home/manik/Manik/Pictures $PATHTOPICS
 else
 	#Quitting if not host not found online
 	echo "$HOST not Found, can't sync. Quitting."
