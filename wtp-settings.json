@@ -26,8 +26,8 @@
             "fontSize": 11,
             "colorScheme": "Pastel",
             "padding":"20, 15, 20, 10",
-            // "useAcrylic": true, 
-            // "acrylicOpacity": 0.8
+            //"useAcrylic": true 
+            //"acrylicOpacity": 0.8
         },
         "list":
         [
