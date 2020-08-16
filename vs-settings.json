@@ -100,7 +100,6 @@
     },
     "breadcrumbs.enabled": true,
     "editor.renderWhitespace": "none",
-    "workbench.iconTheme": "vscode-seedling-icon-theme",
     "customizeUI.font.regular": "Victor Mono",
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.autoBuild.interval": 500,
@@ -123,5 +122,6 @@
     "java.semanticHighlighting.enabled": true,
     "python.languageServer": "Microsoft",
     "window.menuBarVisibility": "compact",
+    "workbench.iconTheme": "file-icons",
 
 }

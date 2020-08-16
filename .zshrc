@@ -34,7 +34,9 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 alias python='python3'
 alias pip='pip3'
-
+alias projects='cd /home/manik/Projects'
+alias scripts='cd /home/manik/scripts'
+#alias zshrc='vim /home/manik/.zshrc'
 
 # Ruby 
 export PATH="/usr/local/sbin:$PATH"
