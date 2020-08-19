@@ -1,24 +1,20 @@
 install :	
 		@echo "installing all scripts"
 
-		@echo "installing syncNas.sh"
-		@cp syncNas.sh /usr/local/bin/
+		@echo "installing syncnas"
+		@cp syncnas /usr/local/bin/
 
-		@echo "installing updateDots.sh"
-		@cp updateDots.sh /usr/local/bin/
-
-		@echo "installing themeSystem.sh"
-		@cp themeSystem.sh /usr/local/bin/
+		@echo "installing updatedots"
+		@cp updatedots /usr/local/bin/
 		
-		@echo "installing copywinsettings.sh"
-		@cp copywinsettings.sh /usr/local/bin
+		@echo "installing copywinsettings"
+		@cp copywinsettings /usr/local/bin
 
 		@echo "installing info.sh"
 		@cp info.sh /usr/local/bin
 uninstall :
 		@echo "uninstalling all scripts"
-		@rm -r /usr/local/bin/syncNas.sh
-		@rm -r /usr/local/bin/updateDots.sh
-		@rm -r /usr/local/bin/themeSystem.sh	
+		@rm -r /usr/local/bin/syncnas
+		@rm -r /usr/local/bin/updatedots	
 		@rm -r /usr/local/bin/info.sh
-		@rm -r /usr/local/bin/copywinsettings.sh
+		@rm -r /usr/local/bin/copywinsettings
