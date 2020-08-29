@@ -36,6 +36,7 @@ alias python='python3'
 alias pip='pip3'
 alias projects='cd /home/manik/Projects'
 alias scripts='cd /home/manik/scripts'
+alias pls='sudo'
 #alias zshrc='vim /home/manik/.zshrc'
 
 # Ruby 
