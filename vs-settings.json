@@ -123,4 +123,7 @@
   "python.languageServer": "Microsoft",
   "workbench.iconTheme": "file-icons",
   "window.menuBarVisibility": "compact",
+  "latex-workshop.latex.clean.subfolder.enabled": true,
+  "latex-workshop.message.update.show": false,
+  "java.project.importHint": false,
 }

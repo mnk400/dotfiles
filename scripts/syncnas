@@ -13,14 +13,18 @@ then
 		    echo "NAS mounted" 
 	else
 		    echo "Error: NAS not mounted"
-		    exit
+		exit
 	fi
 	
 	echo "Running rsync"
 	echo "Syncing Documents"
-	rsync -rtvu --delete "/home/manik/Manik/Drive/Documents/" $PATHTODOC
+	rsync -rtvu --delete "/home/manik/Manik/OneDrive/Documents/" $PATHTODOC
 	echo "Syncing Photos"
-	rsync -rtvu --delete "/home/manik/Manik/Pictures/" $PATHTOPICS
+	rsync -rtvu --delete "/home/manik/Manik/OneDrive/Pictures/Photo Archive" $PATHTOPICS
+	rsync -rtvu --delete "/home/manik/Manik/OneDrive/Pictures/Saved Pictures" $PATHTOPICS
+	rsync -rtvu --delete "/home/manik/Manik/OneDrive/Pictures/Screenshots" $PATHTOPICS
+	rsync -rtvu --delete "/home/manik/Manik/OneDrive/Pictures/Wallpapers" $PATHTOPICS
+	
 	
 else
 	#Quitting if not host not found online
