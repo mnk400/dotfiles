@@ -41,7 +41,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'mhinz/vim-startify'
 Plug 'maralla/validator.vim'
-Plug 'lervag/vimtex'
 Plug '~/.vim/plugged/YouCompleteMe'
 
 call plug#end()
