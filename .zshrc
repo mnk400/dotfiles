@@ -6,7 +6,7 @@ export ZSH="/home/manik/.oh-my-zsh"
 
 # Path set for Maven
 export M2_HOME=/Applications/apache-maven-3.6.3
-export PATH=$PATH:$M2_HOME/bin
+export PATH=$PATH:/home/manik/.local/bin:$M2_HOME/bin
 
 # Alias python to python3
 alias python='python3'
@@ -15,7 +15,7 @@ alias python='python3'
 export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
 
 # Adding iot-device and my LinearRegression modules to PYTHONPATH
-export PYTHONPATH="/Users/manik/Projects/LinearRegression:/Users/manik/Projects/iot-device/apps:$PYTHONPATH"
+export PYTHONPATH="/Users/manik/Projects/LinearRegression:/Users/manik/Projects/iot-device/apps:/home/manik/.local/bin:$PYTHONPATH"
 #Adding JUPYTER to PATH
 
 # Setting the zsh theme
