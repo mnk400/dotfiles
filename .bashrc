@@ -127,9 +127,8 @@ if [ -n $wsl2_d_tmp ]
 then
     first_line=$(expr $wsl2_d_tmp - 4)
     wsl2_d_tmp=$($ipconfig_exec | sed $first_line,$wsl2_d_tmp!d | grep IPv4 | cut -d : -f 2 | sed -e "s|\s||g" -e "s|\r||g")
-    export DISPLAY="$wsl2_d_tmp:0"
 else
-    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk "{print $2}"):0
 fi
 export GDK_SCALE=2
 export QT_SCALE_FACTOR=2
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
