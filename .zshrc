@@ -126,6 +126,4 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias python3 to python
 # alias pip3 to pip
-
-
 export TERM=xterm-256color

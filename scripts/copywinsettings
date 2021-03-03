@@ -1,7 +1,7 @@
 #!/bin/bash
 
 vssettingspath=/mnt/c/Users/Manik/AppData/Roaming/Code/User/settings.json
-windowsterminalpath=/mnt/c/Users/Manik/AppData/Local/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json
+windowsterminalpath=/mnt/c/Users/Manik/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json
 rainmeterpath=/mnt/c/Users/Manik/Drive/Documents/Rainmeter/Skins/
 
 echo "Copying Visual Studio Code settings"
