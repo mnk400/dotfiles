@@ -28,7 +28,13 @@
     "Smtp",
     "loglikehood",
     "manik",
-    "numpy"
+    "numpy",
+    "xdata",
+    "ydata"
+  ],
+  "editor.rulers": [
+    79,
+    130
   ],
   "editor.tokenColorCustomizations": {
       "textMateRules": [
@@ -79,6 +85,7 @@
       "activityBar.background": "#141414",
       "editor.background": "#0a0a0a",
       "sideBar.background": "#0f0f0f",
+      "editorRuler.foreground": "#202020",
       "sideBarSectionHeader.background":"#141414",
       "editorGroupHeader.tabsBackground": "#0a0a0a",
       "tab.activeBackground": "#242424",
@@ -127,4 +134,5 @@
   "git.autofetch": true,
   "terminal.integrated.rendererType": "dom",
   "workbench.colorTheme": "Default Dark+",
+  "python.linting.pylamaEnabled": true,
 }
