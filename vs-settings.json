@@ -120,7 +120,7 @@
   "python.testing.unittestEnabled": true,
   "editor.accessibilitySupport": "off",
   "kite.showWelcomeNotificationOnStartup": false,
-  "python.pythonPath": "/bin/python3",
+  "python.pythonPath": "C:\\Python39\\python.exe",
   "python.dataScience.askForKernelRestart": false,
   "window.nativeTabs": true,
   "python.linting.flake8CategorySeverity.E": "Hint",

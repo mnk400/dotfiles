@@ -131,4 +131,4 @@ else
 fi
 export GDK_SCALE=2
 export QT_SCALE_FACTOR=2
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+
