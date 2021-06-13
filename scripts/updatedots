@@ -15,7 +15,7 @@ elif [ "$#" == 1 ]; then
 fi
 
 #Copying settings over from the windows side
-copywinsettings
+sudo copywinsettings
 
 #Creating a commit message
 commitMsg="$msg: $(date)"
