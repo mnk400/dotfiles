@@ -3,53 +3,57 @@ HOST='squishypi.lan'
 PATHTODOC='/home/manik/NAS/Documents'
 PATHTOPROJ='/home/manik/NAS/Projects'
 PATHTOPICS='/home/manik/NAS/Photos/Pictures'
+
+source common_utils.sh
 #Checking if connected to the NAS
 if ping -q -c 1 -W 1 $HOST >/dev/null; 
 then	
-	echo "$HOST online, checking if mounted"
+	echoInfo "$HOST online, checking if mounted"
 	
 	#Checking if the path to NAS exists, i.e. if it's mounted
-	if [ -d 'home/manik/NAS/Downloads' ] 
+	if [ -d '/home/manik/NAS/Downloads' ] 
 	then
-		    echo "NAS mounted" 
+		    echoInfo "NAS mounted" 
 	else
-		    echo "Error: NAS not mounted"
-		    echo "Attempting mount"
+		    echoWarn "NAS not mounted"
+		    echoInfo "Attempting mount"
 		    sudo mount -a
 		    if [ -d $PATHTODOC ]
 		    then
-		    	    echo "Mounted"
-		    fi
+		    	    echoInfo "Mounted"
+		    else
+					echoError "Mount failed. Exiting."
+					exit 1
+			fi
 	fi
 	
-	echo "Running rsync"
+	echoInfo "Running rsync"
 	
 	if [ -d $PATHTODOC ]
 	then
-		echo "Syncing Documents"
+		echoInfo "Syncing Documents"
 		rsync -rtvu --delete "/home/manik/Manik/Drive/Documents/" $PATHTODOC
 	else
-		echo "Documents folder not found on the NAS"
+		echoWarn "Documents folder not found on the NAS. Skipping syncing Documents"
 	fi
 	
 	if [ -d $PATHTOPROJ ]
 	then
-		echo "Syncing Projects"
+		echoInfo "Syncing Projects"
 		rsync -rtvu --delete "/home/manik/Manik/Projects/" $PATHTOPROJ
 	else
-		echo "Projects folder not found on the NAS"
+		echoWarn "Projects folder not found on the NAS. Skipping syncing Projects"
 	fi
 
 	if [ -d $PATHTOPICS ]
 	then
-		echo "Syncing Photos"
+		echoInfo "Syncing Photos"
 		rsync -rtvu --delete "/home/manik/Manik/Pictures/" $PATHTOPICS
 	else
-		echo "Picture folder not found on the NAS"
+		echoWarn "Picture folder not found on the NAS. Skipping syncing Photos"
 	fi
 	
 else
 	#Quitting if not host not found online
-	echo "$HOST not Found, can't sync. Quitting."
+	echoError "$HOST not Found, can't sync. Quitting."
 fi
-

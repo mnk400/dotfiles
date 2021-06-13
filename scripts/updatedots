@@ -1,9 +1,10 @@
 #!/bin/bash
 #Script to auto update all the tracked files in my dot file repository
 
+source common_utils.sh
 #Checking for a commit message
 if [ "$#" -gt 1 ]; then
-    echo "Illegal number of parameters"
+    echoWarn "Illegal number of parameters"
     exit
 fi
 
@@ -28,4 +29,6 @@ yadm commit -m "$commitMsg"
 #Pushing to github
 yadm push
 
-echo "Pushed to Github"
+if [ $? -eq 0 ]; then
+    echoSuccess "Pushed to Github"
+fi
