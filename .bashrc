@@ -115,20 +115,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-#GWSL_EXPORT_DISPLAY
-ipconfig_exec=$(wslpath "C:\\Windows\\System32\\ipconfig.exe")
-if [ -x $(which ipconfig.exe) ]
-then
-    ipconfig_exec=$(which ipconfig.exe)
-fi
-
-wsl2_d_tmp=$($ipconfig_exec | grep -n -m 1 "Default Gateway.*: [0-9a-z]" | cut -d : -f 1)
-if [ -n $wsl2_d_tmp ]
-then
-    first_line=$(expr $wsl2_d_tmp - 4)
-    wsl2_d_tmp=$($ipconfig_exec | sed $first_line,$wsl2_d_tmp!d | grep IPv4 | cut -d : -f 2 | sed -e "s|\s||g" -e "s|\r||g")
-else
-fi
-export GDK_SCALE=2
-export QT_SCALE_FACTOR=2
-
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0 #GWSL
+export PULSE_SERVER=tcp:$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}') #GWSL

@@ -12,7 +12,8 @@ export PATH=$PATH:/home/manik/.local/bin:$M2_HOME/bin
 alias python='python3'
 
 # WSL, X-display setting
-export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0 #GWSL
+export PULSE_SERVER=tcp:$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}') #GWSL
 
 # Adding iot-device and my LinearRegression modules to PYTHONPATH
 export PYTHONPATH="/Users/manik/Projects/LinearRegression:/Users/manik/Projects/iot-device/apps:/home/manik/.local/bin:$PYTHONPATH"
