@@ -124,4 +124,18 @@
   "workbench.sideBar.location": "left",
   "terminal.integrated.gpuAcceleration": "off",
   "python.defaultInterpreterPath": "C:\\Python39\\python.exe",
+  "editor.inlineSuggest.enabled": true,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "github.copilot.enable": {
+    "*": false,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": false
+  },
 }
