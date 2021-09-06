@@ -1,5 +1,5 @@
 #!/bin/bash
-HOST='squishypi.lan'
+HOST='waterfall.lan'
 PATHTODOC='/home/manik/NAS/Documents'
 PATHTOPROJ='/home/manik/NAS/Projects'
 PATHTOPICS='/home/manik/NAS/Photos/Pictures'
