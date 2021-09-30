@@ -93,8 +93,6 @@
   "breadcrumbs.enabled": true,
   "editor.renderWhitespace": "none",
   "customizeUI.font.regular": "Victor Mono",
-  "customizeUI.activityBar": "bottom",
-  "customizeUI.moveStatusbar": false,
   "latex-workshop.view.pdf.viewer": "tab",
   "latex-workshop.latex.autoBuild.interval": 500,
   "explorer.confirmDelete": false,
@@ -133,9 +131,9 @@
     "jupyter-notebook": "left"
   },
   "github.copilot.enable": {
-    "*": false,
+    "*": true,
     "yaml": false,
-    "plaintext": false,
+    "plaintext": true,
     "markdown": false
   },
 }
