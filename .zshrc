@@ -1,7 +1,11 @@
 # Fig pre block. Keep at the top of this file.
 . "$HOME/.fig/shell/zshrc.pre.zsh"
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# PATH variable
+if [ -d "/usr/local/bin/bashutils" ]
+then
+	export PATH=/usr/local/bin/bashutils:$PATH
+fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
