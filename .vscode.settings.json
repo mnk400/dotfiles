@@ -1,0 +1,125 @@
+{
+  "editor.suggestSelection": "first",
+  "editor.fontFamily": "Victor Mono",
+  "editor.fontSize": 15,
+  "editor.fontLigatures": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.hideCursorInOverviewRuler": true, 
+  "editor.overviewRulerBorder": false,
+  "update.mode": "manual",
+  "git.enableSmartCommit": true,
+  "editor.minimap.enabled": true,
+  "editor.minimap.renderCharacters": false,
+  "editor.scrollbar.verticalScrollbarSize": 0,
+  "editor.rulers": [
+    79,
+    130
+  ],
+  "editor.tokenColorCustomizations": {
+      "textMateRules": [
+        {
+          "scope": [
+            //following will be in italic
+            "comment",
+            "comment.block",
+            "comment.block.documentation",
+            "string.quoted.docstring.multi.python",
+            "entity.name.type.class", //class names
+            "keyword", //import, export, return…
+            "constant", //String, Number, Boolean…, this, super
+            "storage.modifier", //static keyword
+            "storage.type.class.js", //class keyword
+          ],
+          "settings": { 
+            "fontStyle": "italic"
+          }
+        },
+        {
+          "scope": [
+            //following will be excluded from italics
+            "invalid",
+            "keyword.operator",
+            "constant.numeric.css",
+            "keyword.other.unit.px.css",
+            "constant.numeric.decimal.js",
+            "constant.numeric.json"
+          ],
+          "settings": {
+            "fontStyle": ""
+          }
+        },
+        {
+          "scope": [
+            "comment",
+          ],
+          "settings": { 
+            "foreground":"#787878",
+          }
+        },
+      ]
+    },
+  "workbench.colorCustomizations": {
+      "activityBar.background": "#141414",
+      "editor.background": "#0a0a0a",
+      "titleBar.activeBackground": "#141414",
+      "sideBar.background": "#141414",
+      "editorRuler.foreground": "#202020",
+      "sideBarSectionHeader.background":"#141414",
+      "editorGroupHeader.tabsBackground": "#0a0a0a",
+      "tab.activeBackground": "#242424",
+      "tab.inactiveBackground": "#0a0a0a",
+      "tab.hoverBackground": "#101010", 
+      "tab.border": "#0a0a0a",
+      "editorBracketMatch.background": "#353535",
+      "editorBracketMatch.border": "#353535",
+      "statusBar.background": "#5a2f3c",
+      "statusBar.foreground": "#d1c1c6",
+      "badge.background": "#5a2f3c",
+      "activityBarBadge.background": "#5a2f3c",
+      "editor.selectionBackground": "#333333",
+      "editor.lineHighlightBackground": "#202020",
+      "scrollbar.shadow": "#00000000",
+      "peekView.border": "#00000000",
+      "peekViewResult.background":"#202020",
+      "peekViewTitle.background": "#202020",
+      "statusBarItem.remoteBackground": "#435748",
+      "statusBarItem.remoteForeground": "#ccdbd0",
+      "statusBar.noFolderBackground": "#40364e",
+      "statusBar.debuggingBackground": "#77412e"
+  },
+  "breadcrumbs.enabled": true,
+  "editor.renderWhitespace": "none",
+  "customizeUI.font.regular": "Victor Mono",
+  "explorer.confirmDelete": false,
+  "[python]": {},
+  "git.confirmSync": false,
+  "window.zoomLevel": 0,
+  "editor.accessibilitySupport": "off",
+  "window.nativeTabs": true,
+  "workbench.iconTheme": "file-icons",
+  "git.autofetch": true,
+  "workbench.list.smoothScrolling": true,
+  "editor.smoothScrolling": true,
+  "workbench.sideBar.location": "left",
+  "terminal.integrated.gpuAcceleration": "off",
+  "editor.inlineSuggest.enabled": true,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1"
+  },
+  "customizeUI.activityBar": "bottom",
+  "customizeUI.titleBar": "inline",
+  "window.titleBarStyle": "native",
+  "customizeUI.statusBarPosition": "top",
+  "customizeUI.stylesheet": {
+    ".tabs-container ": "padding-top:7px; padding-left:2px; padding-bottom:5px",
+    ".tabs-container > .tab": "border-radius: 7px 7px 7px 7px; height: 20px; margin-left: 5px; padding-right:4px",
+    ".monaco-editor .suggest-widget": "border-radius: 10px 10px 10px 10px; overflow:hidden;"
+  }
+}
