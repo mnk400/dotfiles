@@ -60,7 +60,19 @@
     },
   "workbench.colorCustomizations": {
       "activityBar.background": "#141414",
-      "edi"statusBar.background": "#5a2f3c",
+      "editor.background": "#0a0a0a",
+      "titleBar.activeBackground": "#141414",
+      "sideBar.background": "#141414",
+      "editorRuler.foreground": "#202020",
+      "sideBarSectionHeader.background":"#141414",
+      "editorGroupHeader.tabsBackground": "#0a0a0a",
+      "tab.activeBackground": "#242424",
+      "tab.inactiveBackground": "#0a0a0a",
+      "tab.hoverBackground": "#101010", 
+      "tab.border": "#0a0a0a",
+      "editorBracketMatch.background": "#353535",
+      "editorBracketMatch.border": "#353535",
+      "statusBar.background": "#5a2f3c",
       "statusBar.foreground": "#d1c1c6",
       "badge.background": "#5a2f3c",
       "activityBarBadge.background": "#5a2f3c",
@@ -105,4 +117,9 @@
   "customizeUI.titleBar": "inline",
   "window.titleBarStyle": "native",
   "customizeUI.statusBarPosition": "top",
+  "customizeUI.stylesheet": {
+    ".tabs-container ": "padding-top:7px; padding-left:2px; padding-bottom:5px",
+    ".tabs-container > .tab": "border-radius: 7px 7px 7px 7px; height: 20px; margin-left: 5px; padding-right:4px",
+    ".monaco-editor .suggest-widget": "border-radius: 10px 10px 10px 10px; overflow:hidden;"
+  }
 }
