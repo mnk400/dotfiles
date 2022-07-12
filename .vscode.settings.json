@@ -1,6 +1,6 @@
 {
   "editor.suggestSelection": "first",
-  "editor.fontFamily": "Victor Mono",
+  "editor.fontFamily": "VictorMono Nerd Font",
   "editor.fontSize": 15,
   "editor.fontLigatures": true,
   "workbench.startupEditor": "newUntitledFile",
@@ -89,7 +89,7 @@
   },
   "breadcrumbs.enabled": true,
   "editor.renderWhitespace": "none",
-  "customizeUI.font.regular": "Victor Mono",
+  "customizeUI.font.regular": "VictorMono Nerd Font",
   "explorer.confirmDelete": false,
   "[python]": {},
   "git.confirmSync": false,
@@ -121,5 +121,6 @@
     ".tabs-container ": "padding-top:7px; padding-left:2px; padding-bottom:5px",
     ".tabs-container > .tab": "border-radius: 7px 7px 7px 7px; height: 20px; margin-left: 5px; padding-right:4px",
     ".monaco-editor .suggest-widget": "border-radius: 10px 10px 10px 10px; overflow:hidden;"
-  }
+  },
+  "editor.codeLensFontFamily": "VictorMono Nerd Font"
 }
