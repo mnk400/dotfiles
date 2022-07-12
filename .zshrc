@@ -20,7 +20,7 @@ source $ZSH/oh-my-zsh.sh
 export TEXT_EDITOR="vim"
 
 # Adding directories to PATH
-export PATH="/usr/local/bin/bashutils:$PATH"
+export PATH="$PATH"
 
 # ALiases
 alias zshrc="${TEXT_EDITOR} ~/.zshrc"
