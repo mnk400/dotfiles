@@ -120,7 +120,12 @@
   "customizeUI.stylesheet": {
     ".tabs-container ": "padding-top:7px; padding-left:2px; padding-bottom:5px",
     ".tabs-container > .tab": "border-radius: 7px 7px 7px 7px; height: 20px; margin-left: 5px; padding-right:4px",
-    ".monaco-editor .suggest-widget": "border-radius: 10px 10px 10px 10px; overflow:hidden;"
+    ".monaco-editor .suggest-widget": "border-radius: 10px 10px 10px 10px; overflow:hidden;",
+    "a": "border-radius: 6px !important;",
+    ".notifications-center": "border-radius: 6px !important;",
+    ".notification-toast, .notification-fade-in-done": "border-radius: 6px !important;",
+    ".monaco-list .monaco-list-row": "border-radius: 6px !important;",
+    ".statusbar-item.left.has-background-color.first-visible-item": "background-color: rgba(37, 37, 38, 0) !important;",
   },
   "editor.codeLensFontFamily": "VictorMono Nerd Font"
 }
