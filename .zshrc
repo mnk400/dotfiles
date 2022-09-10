@@ -10,8 +10,11 @@ ZSH_THEME="Agnoster"
 # Plugins
 plugins=(git)
 
-# Oh my ZSH
+# Source stuff
+# oh my zsh
 source $ZSH/oh-my-zsh.sh
+# rust
+source "$HOME/.cargo/env"
 
 #### User Config ####
 #####################

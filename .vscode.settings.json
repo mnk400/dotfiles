@@ -93,7 +93,6 @@
   "explorer.confirmDelete": false,
   "[python]": {},
   "git.confirmSync": false,
-  "window.zoomLevel": 0,
   "editor.accessibilitySupport": "off",
   "window.nativeTabs": true,
   "workbench.iconTheme": "file-icons",
