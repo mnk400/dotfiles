@@ -178,21 +178,6 @@
             "simple_modifications": [
                 {
                     "from": {
-                        "key_code": "tab",
-                        "modifiers": {
-                            "mandatory": [
-                                "command"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "key_code": "f13"
-                        }
-                    ]
-                },
-                {
-                    "from": {
                         "key_code": "f1",
                         "modifiers": {
                             "mandatory": [
@@ -221,7 +206,6 @@
                         }
                     ]
                 }
-                
             ],
             "virtual_hid_keyboard": {
                 "country_code": 0,
