@@ -1,7 +1,9 @@
 {
-    "terminal.integrated.env.osx": {
-        "FIG_NEW_SESSION": "1"
-    },
-    "window.commandCenter": true,
-    "editor.accessibilitySupport": "off"
+  "editor.accessibilitySupport": "off",
+  "terminal.integrated.env.osx": {
+    "FIG_NEW_SESSION": "1",
+    "Q_NEW_SESSION": "1"
+  },
+  "window.commandCenter": true,
+  "github.copilot.editor.enableAutoCompletions": true
 }
