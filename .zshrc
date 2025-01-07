@@ -21,8 +21,11 @@ source "$HOME/.cargo/env"
 # Setting texteditor 
 export TEXT_EDITOR="vim"
 
+# Script directories
+SCRIPTS="/Users/manik/Projects/Scripts/nas:/Users/manik/Projects/Scripts/dotfiles:/Users/manik/Projects/Scripts/photos"
+
 # Adding directories to PATH
-export PATH="$PATH"
+export PATH="$PATH:$SCRIPTS"
 
 # ALiases
 alias zshrc="${TEXT_EDITOR} ~/.zshrc"
