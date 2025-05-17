@@ -1,9 +1,11 @@
 {
   "editor.accessibilitySupport": "off",
+  "github.copilot.editor.enableAutoCompletions": true,
   "terminal.integrated.env.osx": {
     "FIG_NEW_SESSION": "1",
     "Q_NEW_SESSION": "1"
   },
   "window.commandCenter": true,
-  "github.copilot.editor.enableAutoCompletions": true
+  "workbench.activityBar.location": "top",
+  "workbench.colorTheme": "Oscura Midnight"
 }

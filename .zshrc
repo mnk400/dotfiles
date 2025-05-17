@@ -22,7 +22,7 @@ source "$HOME/.cargo/env"
 export TEXT_EDITOR="vim"
 
 # Script directories
-SCRIPTS="/Users/manik/Projects/Scripts/nas:/Users/manik/Projects/Scripts/dotfiles:/Users/manik/Projects/Scripts/photos"
+SCRIPTS="/Users/manik/Projects/Scripts/nas:/Users/manik/Projects/Scripts/dotfiles:/Users/manik/Projects/Scripts/files:/Users/manik/Projects/Scripts/lib"
 
 # Adding directories to PATH
 export PATH="$PATH:$SCRIPTS"
@@ -41,3 +41,4 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+eval "$(atuin init zsh)"
