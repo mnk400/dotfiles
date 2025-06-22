@@ -21,11 +21,22 @@ source "$HOME/.cargo/env"
 # Setting texteditor 
 export TEXT_EDITOR="vim"
 
-# Script directories
-SCRIPTS="/Users/manik/Projects/Scripts/nas:/Users/manik/Projects/Scripts/dotfiles:/Users/manik/Projects/Scripts/files:/Users/manik/Projects/Scripts/lib"
-
-# Adding directories to PATH
-export PATH="$PATH:$SCRIPTS"
+# BEGIN SCRIPTS PATH - Automatically
+# Main Scripts directory
+export PATH="/Users/manik/Projects/Scripts:$PATH"
+# Scripts subdirectory: dotfiles
+export PATH="/Users/manik/Projects/Scripts/dotfiles:$PATH"
+# Scripts subdirectory: general
+export PATH="/Users/manik/Projects/Scripts/general:$PATH"
+# Scripts subdirectory: nas
+export PATH="/Users/manik/Projects/Scripts/nas:$PATH"
+# Scripts subdirectory: icons
+export PATH="/Users/manik/Projects/Scripts/icons:$PATH"
+# Scripts subdirectory: lib
+export PATH="/Users/manik/Projects/Scripts/lib:$PATH"
+# Scripts subdirectory: files
+export PATH="/Users/manik/Projects/Scripts/files:$PATH"
+# END SCRIPTS PATH
 
 # ALiases
 alias zshrc="${TEXT_EDITOR} ~/.zshrc"
@@ -36,9 +47,11 @@ alias python=python3
 # Ruby env stuff
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-
 [[ -f "$HOME/fig-export/dotfiles/dotfile.zsh" ]] && builtin source "$HOME/fig-export/dotfiles/dotfile.zsh"
+
+eval "$(atuin init zsh)"
+
+export PATH="/Users/manik/Projects/Scripts:$PATH"
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
-eval "$(atuin init zsh)"
