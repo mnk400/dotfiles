@@ -53,5 +53,12 @@ eval "$(atuin init zsh)"
 
 export PATH="/Users/manik/Projects/Scripts:$PATH"
 
+# bun completions
+[ -s "/Users/manik/.bun/_bun" ] && source "/Users/manik/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
