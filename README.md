@@ -1,3 +1,3 @@
 # Dotfiles
 
-![](https://i.imgur.com/vac1CMh.jpg)
+![](https://i.imgur.com/He4A0a3.jpeg)
