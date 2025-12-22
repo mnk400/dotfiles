@@ -23,6 +23,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/Users/manik/.antigravity/antigravity/bin:$PATH"
 
 # Aliases
+alias cat="bat -P"
+alias yippie="hyperkey t"
 alias zshrc="${TEXT_EDITOR} ~/.zshrc"
 alias ohmyzsh="${TEXT_EDITOR} ~/.oh-my-zsh"
 alias vimrc="${TEXT_EDITOR} ~/.vimrc"
@@ -34,6 +36,7 @@ which rbenv > /dev/null && eval "$(rbenv init -)"
 [[ -f "$HOME/fig-export/dotfiles/dotfile.zsh" ]] && source "$HOME/fig-export/dotfiles/dotfile.zsh"
 [[ -s "$HOME/.bun/_bun" ]] && source "$HOME/.bun/_bun"
 eval "$(atuin init zsh)"
+source $HOME/.creds
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
