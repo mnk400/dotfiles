@@ -29,6 +29,7 @@ alias zshrc="${TEXT_EDITOR} ~/.zshrc"
 alias ohmyzsh="${TEXT_EDITOR} ~/.oh-my-zsh"
 alias vimrc="${TEXT_EDITOR} ~/.vimrc"
 alias python=python3
+alias a=runbook
 
 # Tool initialization
 which rbenv > /dev/null && eval "$(rbenv init -)"
@@ -38,5 +39,12 @@ which rbenv > /dev/null && eval "$(rbenv init -)"
 eval "$(atuin init zsh)"
 source $HOME/.creds
 
+# Custom completions
+fpath=(~/.zsh/completions $fpath)
+autoload -U compinit && compinit
+
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+
+# Added by Antigravity
+export PATH="/Users/manik/.antigravity/antigravity/bin:$PATH"
