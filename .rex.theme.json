@@ -1,0 +1,173 @@
+[
+  {
+    "appearance": "dark",
+    "createdAt": 814767349.151896,
+    "id": "custom-FEE99675-D4E5-46DE-8461-A546CC317E23",
+    "name": "Manik Rose",
+    "palette": {
+      "ansi": [
+        {
+          "alpha": 1,
+          "blue": 0.12549019607843137,
+          "colorSpace": "srgb",
+          "green": 0.12549019607843137,
+          "red": 0.12549019607843137
+        },
+        {
+          "alpha": 1,
+          "blue": 0.545098,
+          "colorSpace": "srgb",
+          "green": 0.427451,
+          "red": 0.92549
+        },
+        {
+          "alpha": 1,
+          "blue": 0.572549,
+          "colorSpace": "srgb",
+          "green": 0.729412,
+          "red": 0.54902
+        },
+        {
+          "alpha": 1,
+          "blue": 0.47451,
+          "colorSpace": "srgb",
+          "green": 0.682353,
+          "red": 0.87451
+        },
+        {
+          "alpha": 1,
+          "blue": 0.8274509803921568,
+          "colorSpace": "srgb",
+          "green": 0.6313725490196078,
+          "red": 0.40784313725490196
+        },
+        {
+          "alpha": 1,
+          "blue": 0.752941,
+          "colorSpace": "srgb",
+          "green": 0.521569,
+          "red": 0.803922
+        },
+        {
+          "alpha": 1,
+          "blue": 0.698039,
+          "colorSpace": "srgb",
+          "green": 0.717647,
+          "red": 0.513725
+        },
+        {
+          "alpha": 1,
+          "blue": 0.721569,
+          "colorSpace": "srgb",
+          "green": 0.682353,
+          "red": 0.764706
+        },
+        {
+          "alpha": 1,
+          "blue": 0.388235,
+          "colorSpace": "srgb",
+          "green": 0.352941,
+          "red": 0.431373
+        },
+        {
+          "alpha": 1,
+          "blue": 0.643137,
+          "colorSpace": "srgb",
+          "green": 0.545098,
+          "red": 0.964706
+        },
+        {
+          "alpha": 1,
+          "blue": 0.670588,
+          "colorSpace": "srgb",
+          "green": 0.819608,
+          "red": 0.654902
+        },
+        {
+          "alpha": 1,
+          "blue": 0.580392,
+          "colorSpace": "srgb",
+          "green": 0.776471,
+          "red": 0.937255
+        },
+        {
+          "alpha": 1,
+          "blue": 0.8901960784313725,
+          "colorSpace": "srgb",
+          "green": 0.7254901960784313,
+          "red": 0.5607843137254902
+        },
+        {
+          "alpha": 1,
+          "blue": 0.831373,
+          "colorSpace": "srgb",
+          "green": 0.635294,
+          "red": 0.87451
+        },
+        {
+          "alpha": 1,
+          "blue": 0.792157,
+          "colorSpace": "srgb",
+          "green": 0.811765,
+          "red": 0.619608
+        },
+        {
+          "alpha": 1,
+          "blue": 0.8627450980392157,
+          "colorSpace": "srgb",
+          "green": 0.8588235294117647,
+          "red": 0.8705882352941177
+        }
+      ],
+      "background": {
+        "alpha": 1,
+        "blue": 0.0784313725490196,
+        "colorSpace": "srgb",
+        "green": 0.0784313725490196,
+        "red": 0.0784313725490196
+      },
+      "cursor": {
+        "alpha": 1,
+        "blue": 0.9333333333333333,
+        "colorSpace": "srgb",
+        "green": 0.6862745098039216,
+        "red": 0.396078431372549
+      },
+      "cursorText": {
+        "alpha": 1,
+        "blue": 0.0784313725490196,
+        "colorSpace": "srgb",
+        "green": 0.0784313725490196,
+        "red": 0.0784313725490196
+      },
+      "foreground": {
+        "alpha": 1,
+        "blue": 0.8627450980392157,
+        "colorSpace": "srgb",
+        "green": 0.8588235294117647,
+        "red": 0.8705882352941177
+      },
+      "paletteBase": {},
+      "paletteGenerate": true,
+      "paletteHarmonious": true,
+      "paletteOverrides": {},
+      "selectionBackground": {
+        "alpha": 1,
+        "blue": 0.20392156862745098,
+        "colorSpace": "srgb",
+        "green": 0.20392156862745098,
+        "red": 0.20392156862745098
+      },
+      "selectionForeground": {
+        "alpha": 1,
+        "blue": 0.9294117647058824,
+        "colorSpace": "srgb",
+        "green": 0.9294117647058824,
+        "red": 0.9294117647058824
+      }
+    },
+    "source": {
+      "manual": {}
+    }
+  }
+]

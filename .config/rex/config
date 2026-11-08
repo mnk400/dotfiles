@@ -1,0 +1,6 @@
+# Rex script directories (one path per line)
+# Add directories with: rex dirs add <path>
+/Users/manik/Projects/Scripts/general
+/Users/manik/tst
+
+max_depth=3
